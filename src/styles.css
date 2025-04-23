@@ -3,9 +3,9 @@
 }
 
 :root {
-  --background-color: #0b0b0e;
+  --background-color: #1b1a1f; /* Purple Gradient Base */
   --text-color: #ffffff;
-  --gamba-ui-primary-color: #9564ff;
+  --gamba-ui-primary-color: #1b1a1f;
 
   --gamba-ui-border-radius: 10px;
 
@@ -13,9 +13,9 @@
   --gamba-ui-button-default-background-hover: #11111d;
   --gamba-ui-button-default-color: white;
 
-  --gamba-ui-button-main-background: #8851ff;
+  --gamba-ui-button-main-background: #8851ff; /* Purple main button */
   --gamba-ui-button-main-color: white;
-  --gamba-ui-button-main-background-hover: #9564ff;
+  --gamba-ui-button-main-background-hover: #9564ff; /* Hover with lighter purple */
 
   --gamba-ui-input-background: #0e0e16;
   --gamba-ui-input-color: #ffffff;
@@ -32,13 +32,21 @@ h1, h2 {
 }
 
 body {
-  background: var(--background-color);
+  background: linear-gradient(-45deg, #1b1a1f, #1b1a1f, #1b1a1f, #1b1a1f);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
   color: var(--text-color);
   cursor: default;
   margin: 0;
   overflow-y: scroll;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 a {

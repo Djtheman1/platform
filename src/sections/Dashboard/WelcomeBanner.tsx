@@ -8,33 +8,40 @@ const Buttons = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
-
+  gap: 15px;
+  width: 100%;
+  
   @media (min-width: 800px) {
-    height: 100%;
-  }
-
-  @media (max-width: 800px) {
-    display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
-    padding-top: 0!important;
+    height: 100%;
   }
 
   & > button {
     border: none;
     width: 100%;
-    border-radius: 10px;
-    padding: 10px;
-    background: #ffffffdf;
-    transition: background-color .2s ease;
-    color: black;
+    border-radius: 12px;
+    padding: 12px 20px;
+    background: #ffffff90;
+    transition: background-color .3s ease, transform .2s ease;
+    color: #333;
+    font-weight: 500;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
     &:hover {
-      background: white;
+      background: #ffffff;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      background: #f1f1f1;
+    }
+
+    @media (min-width: 800px) {
+      width: 150px;
     }
   }
 `
@@ -63,16 +70,17 @@ const Welcome = styled.div`
 
   background: linear-gradient(-45deg, #ffb07c, #ff3e88, #2969ff, #ef3cff, #ff3c87);
   background-size: 300% 300%;
-  animation: welcome-fade-in .5s ease, backgroundGradient 30s ease infinite;
-  border-radius: 10px;
+  animation: welcome-fade-in 1s ease, backgroundGradient 30s ease infinite;
+  border-radius: 12px;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 20px;
-  filter: drop-shadow(0 4px 3px rgba(0,0,0,.07)) drop-shadow(0 2px 2px rgba(0,0,0,.06));
+  padding: 25px;
+  filter: drop-shadow(0 4px 5px rgba(0, 0, 0, .1)) drop-shadow(0 2px 2px rgba(0, 0, 0, .1));
+  text-align: center;
 
   & img {
     animation-duration: 5s;
@@ -87,8 +95,23 @@ const Welcome = styled.div`
   }
 
   & > div {
-    padding: 0px;
+    padding: 20px;
     filter: drop-shadow(0 4px 3px rgba(0,0,0,.07)) drop-shadow(0 2px 2px rgba(0,0,0,.06));
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 20px;
   }
 
   @media (min-width: 800px) {
@@ -105,6 +128,7 @@ export function WelcomeBanner() {
   const wallet = useWallet()
   const walletModal = useWalletModal()
   const store = useUserStore()
+  
   const copyInvite = () => {
     store.set({ userModal: true })
     if (!wallet.connected) {
@@ -115,21 +139,13 @@ export function WelcomeBanner() {
   return (
     <Welcome>
       <div>
-        <h1>Welcome to Gamba v2 👋</h1>
-        <p>
-          A fair, simple and decentralized casino on Solana.
-        </p>
+        <h1>Welcome to AMETHYST.GG</h1>
+        <p>A PLACE TO WIN BIG AND HAVE FUN!</p>
       </div>
       <Buttons>
-        <button onClick={copyInvite}>
-          💸 Copy Invite
-        </button>
-        <button onClick={() => window.open('https://v2.gamba.so/', '_blank')}>
-          🚀 Add Liquidity
-        </button>
-        <button onClick={() => window.open('https://discord.gg/HSTtFFwR', '_blank')}>
-          💬 Discord
-        </button>
+        <button onClick={copyInvite}>💸 Copy Invite</button>
+        <button onClick={() => window.open('https://v2.gamba.so/', '_blank')}>🚀 Add Liquidity</button>
+        <button onClick={() => window.open('https://discord.gg/HSTtFFwR', '_blank')}>💬 Discord</button>
       </Buttons>
     </Welcome>
   )
